@@ -34,6 +34,16 @@
       "name": "Bruce Lee",
       "starred": true,
       "id": 7
+    },
+    {
+      "name": "Tom Cruises",
+      "starred": false,
+      "id": 8
+    },
+    {
+      "name": "Jackie Chan",
+      "starred": false,
+      "id": 9
     }
   ]
 }

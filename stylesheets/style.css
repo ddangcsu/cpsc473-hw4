@@ -1,5 +1,3 @@
-<!-- Simple list -->
-<style>
 body {
     min-width: 900px;
 }
@@ -10,14 +8,14 @@ body {
 }
 
 .formInput {
-    float:right;
-    width: 500px;
+    float: right;
+    width: 450px;
     padding: 8px 0;
     margin-left: 50px;
 }
 
 .mdl-list {
-    float:left;
+    float: left;
     width: 350px;
     overflow-y:auto;
 }
@@ -32,4 +30,12 @@ body {
     font-weight: bold;
 }
 
-</style>
+.mdl-textfield {
+    float: left;
+    width: 320px;
+}
+
+.mdl-button--mini-fab {
+    margin-top: 15px;
+    margin-left: 20px;
+}
