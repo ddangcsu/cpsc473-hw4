@@ -1,0 +1,25 @@
+<!-- Simple list -->
+<style>
+body {
+    min-width: 900px;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+}
+
+.formInput {
+    float:right;
+    width: 550px;
+    padding: 8px 0;
+    margin-left: 50px;
+}
+
+.mdl-list {
+    float:left;
+    width: 300px;
+    overflow-y:auto;
+}
+
+</style>
