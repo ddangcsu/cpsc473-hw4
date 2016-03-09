@@ -21,9 +21,19 @@
       "starred": false
     },
     {
-      "name": "Foo Bar",
+      "name": "John Doe",
       "starred": true,
       "id": 5
+    },
+    {
+      "name": "Josha Wang",
+      "starred": true,
+      "id": 6
+    },
+    {
+      "name": "Bruce Lee",
+      "starred": true,
+      "id": 7
     }
   ]
 }

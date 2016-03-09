@@ -11,15 +11,25 @@ body {
 
 .formInput {
     float:right;
-    width: 550px;
+    width: 500px;
     padding: 8px 0;
     margin-left: 50px;
 }
 
 .mdl-list {
     float:left;
-    width: 300px;
+    width: 350px;
     overflow-y:auto;
+}
+
+.statusBarMessage {
+    margin-top: 40px;
+}
+
+.statusMessage {
+    border-radius: 10px;
+    padding: 5px;
+    font-weight: bold;
 }
 
 </style>
