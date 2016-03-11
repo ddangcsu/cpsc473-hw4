@@ -48,8 +48,8 @@ var main = function () {
                 $(".statusMessage").text(status).fadeIn().delay(300).fadeOut();
             },
             error: function (result) {
-                //console.log("Result: " + result + " status: " + result.status + " " + result.statusText);
-                $(".statusMessage").text(result.statusText).fadeIn().delay(600).fadeOut();
+                var errMsg = "Webservices error " + result.status + ":" + restFulWsHost;
+                $(".statusMessage").text(errMsg).fadeIn();
             }
         });
     }
@@ -77,7 +77,8 @@ var main = function () {
                 $(".statusMessage").text(status).fadeIn().delay(300).fadeOut();
             },
             error: function (result) {
-                $(".statusMessage").text(result.text).fadeIn().delay(600).fadeOut();
+                var errMsg = "Webservices error " + result.status + ":" + restFulWsHost;
+                $(".statusMessage").text(errMsg).fadeIn();
             }
         });
 
@@ -118,8 +119,9 @@ var main = function () {
                 $(".statusMessage").text(status).fadeIn().delay(300).fadeOut();
             },
             error: function (result) {
+                var errMsg = "Webservices error " + result.status + ":" + restFulWsHost;
+                $(".statusMessage").text(errMsg).fadeIn();
                 $starElement.fadeIn();
-                $(".statusMessage").text(result.statusText).fadeIn().delay(600).fadeOut();
             }
         });
         // Stop the action to prevent follow link

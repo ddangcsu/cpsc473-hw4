@@ -42,8 +42,13 @@
     },
     {
       "name": "Jackie Chan",
-      "starred": false,
+      "starred": true,
       "id": 9
+    },
+    {
+      "name": "Stephen Hawkings",
+      "starred": true,
+      "id": 10
     }
   ]
 }
