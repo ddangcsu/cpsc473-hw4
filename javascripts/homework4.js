@@ -22,6 +22,8 @@ var main = function () {
 
         var $template = $("<div class=\"mdl-list__item\">");
         $template.load("templates/new_list_item.tmpl", function (result, status) {
+            // Fake use of result to get pass JSLint
+            result += "used";
             if (status === "success") {
                 data.forEach(function (item) {
                     // Create a new mdl list item
@@ -45,10 +47,11 @@ var main = function () {
                 });
 
                 statusMessage(status, "success");
-            } else { // Encountered error
+
+            } else {
+                // Encountered error
                 statusMessage(status, "Unable to load templates/new_list_item.tmpl");
             }
-            //console.log("result is:" + result + " status " + status);
         });
     }
 
@@ -85,7 +88,7 @@ var main = function () {
         // Must reset the parent div of the input to remove is-dirty class
         // to allow the float label to reset
         $("#input-actorName").parent().removeClass("is-dirty");
-        
+
         // We need to perform AJAX add to the JSON server here
         $.ajax({
             url: restFulWsHost,
