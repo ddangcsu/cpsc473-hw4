@@ -1,21 +1,3 @@
-.container {
-    max-width: 900px;
-    margin: auto;
-}
-
-.formInput {
-    float: right;
-    width: 400px;
-    padding: 8px 0;
-    margin-left: 50px;
-}
-
-.mdl-list {
-    float: left;
-    width: 350px;
-    overflow-y:auto;
-}
-
 .statusBarMessage {
     margin-top: 40px;
 }
@@ -26,12 +8,20 @@
     font-weight: bold;
 }
 
+.statusSuccess {
+    color: blue;
+}
+
+.statusError {
+    color: red;
+}
+/* To fix issue in firefox where the button is not inline with text field */
 .mdl-textfield {
     float: left;
-    width: 320px;
 }
 
 .mdl-button--mini-fab {
     margin-top: 15px;
     margin-left: 20px;
 }
+/* End fix for firefox */

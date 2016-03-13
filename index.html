@@ -1,56 +1,61 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Homework 4 - David Dang</title>
-        <!-- Material Design Lite-->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="https://code.getmdl.io/1.1.2/material.indigo-pink.min.css">
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="stylesheets/style.css">
-    </head>
-    <body>
-        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-            <header class="mdl-layout__header">
-                <div class="mdl-layout__header-row">
-                    <!-- Title -->
-                    <span class="mdl-layout-title">Homework 4</span>
-                    <!-- Add spacer, to align navigation to the right -->
-                    <div class="mdl-layout-spacer"></div>
-                </div>
-            </header>
-            <main class="mdl-layout__content">
-                <div class="mdl-grid">
-                    <div class="page-content container">
-                        <div class="formInput">
-                            <!-- Textfield with Floating Label -->
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input class="mdl-textfield__input" type="text" id="input-actorName">
-                                <label class="mdl-textfield__label" for="input-actorName">Add new actors ...</label>
-                            </div>
-                            <!-- Mini FAB button -->
-                            <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab action-addActor">
-                                <i class="material-icons">add</i>
-                            </button>
-
-                            <div class="statusBarMessage">
-                                <p class="statusMessage"></p>
-                            </div>
-                        </div>
-
-                        <div class="mdl-list">
-                            <!-- Use jQuery to dynamically add data from JSON RESTful -->
-                        </div>
-                    </div>
-
-                </div>
-          </main>
+  <head>
+    <title>Homework 4 - David Dang</title>
+    <!-- Material Design Lite-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.2/material.indigo-pink.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="stylesheets/style.css">
+  </head>
+  <body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title">Homework 4</span>
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
         </div>
+      </header>
+      <main class="mdl-layout__content">
+        <div class="page-content">
+          <div class="mdl-grid container">
+            <!-- Add margin offset of 3 grid -->
+            <div class="mdl-cell--3-offset-desktop"></div>
+            <div class="mdl-cell mdl-cell--3-col-desktop">
+              <!-- Data output column with a 3 cell grid -->
+              <div class="mdl-list">
+                <!-- Use jQuery to dynamically add data from JSON RESTful -->
+              </div>
+            </div>
+            <div class="mdl-cell mdl-cell--3-col-desktop formInput">
+              <!-- Form input specified with 3 cell grid-->
+              <!-- Textfield with Floating Label -->
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="input-actorName">
+                <label class="mdl-textfield__label" for="input-actorName">Add new actors ...</label>
+              </div>
+              <!-- Mini FAB button -->
+              <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab action-addActor">
+                <i class="material-icons">add</i>
+              </button>
 
-        <!-- Material Design Lite java script library -->
-        <script defer src="https://code.getmdl.io/1.1.2/material.min.js"></script>
-        <!-- jQuery and App specific JS -->
-        <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-        <script src="javascripts/homework4.js"></script>
+              <div class="statusBarMessage">
+                <p class="statusMessage"></p>
+              </div>
+            </div>
+            <div class="mdl-layout-spacer"></div>
+          </div>
+        </div>
+      </main>
+    </div>
 
-    </body>
+    <!-- Material Design Lite java script library -->
+    <script defer src="https://code.getmdl.io/1.1.2/material.min.js"></script>
+    <!-- jQuery and App specific JS -->
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="javascripts/homework4.js"></script>
+
+  </body>
 </html>
