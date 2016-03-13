@@ -4,21 +4,37 @@ var main = function () {
     "use strict";
     var restFulWsHost = "http://localhost:3000/actors";
 
+    function statusMessage(type, msg) {
+        var $status = $(".statusMessage");
+        $status.removeClass("statusError statusSuccess");
+
+        if (type === "success") {
+            $status.addClass("statusSuccess");
+            $status.text(msg).fadeIn().delay(300).fadeOut();
+        } else {
+            $status.addClass("statusError");
+            $status.text(msg).fadeIn();
+        }
+    }
+
     // Create a function to dynamically generate the mdl-list__item
     function createNewActors(data) {
-        var $dummy = $("<div>");
-        $dummy.load("templates/new_list_item.tmpl", function (result, status) {
+
+        var $template = $("<div class=\"mdl-list__item\">");
+        $template.load("templates/new_list_item.tmpl", function (result, status) {
             if (status === "success") {
                 data.forEach(function (item) {
                     // Create a new mdl list item
-                    var $newListItem = $("<div class=\"mdl-list__item\">").hide();
+                    var $newListItem;
                     var starValue = "star_border";
 
                     if (item.starred) {
                         starValue = "star";
                     }
 
-                    $newListItem.append(result);
+                    // Clone the template that we loaded
+                    $newListItem = $template.clone().hide();
+                    // Modify the DOM object
                     $newListItem.find(".data-actorId").text(item.id);
                     $newListItem.find(".data-actorName").text(item.name);
                     $newListItem.find(".data-actorStarred").text(starValue);
@@ -27,8 +43,10 @@ var main = function () {
                     $(".mdl-list").append($newListItem);
                     $newListItem.fadeIn();
                 });
-            } else {
-                $(".mdl-list").append($("<p>").text("Unable to load template templates/new_list_item.tmpl"));
+
+                statusMessage(status, "success");
+            } else { // Encountered error
+                statusMessage(status, "Unable to load templates/new_list_item.tmpl");
             }
             //console.log("result is:" + result + " status " + status);
         });
@@ -42,17 +60,17 @@ var main = function () {
             url: restFulWsHost,
             type: "json",
             method: "GET",
-            success: function (result, status) {
+            success: function (result) {
                 // Pull multiple records will create an array of object
                 createNewActors(result);
-                $(".statusMessage").text(status).fadeIn().delay(300).fadeOut();
             },
             error: function (result) {
                 var errMsg = "Webservices error " + result.status + ":" + restFulWsHost;
-                $(".statusMessage").text(errMsg).fadeIn();
+                statusMessage(result.status, errMsg);
             }
         });
     }
+
     // Add click event to add new star
     $(".container").on("click", ".action-addActor", function () {
         var newActor = {};
@@ -64,24 +82,25 @@ var main = function () {
         newActor.starred = false;
         // clear it
         $("#input-actorName").val("");
-
+        // Must reset the parent div of the input to remove is-dirty class
+        // to allow the float label to reset
+        $("#input-actorName").parent().removeClass("is-dirty");
+        
         // We need to perform AJAX add to the JSON server here
         $.ajax({
             url: restFulWsHost,
             type: "json",
             method: "POST",
             data: newActor,
-            success: function (result, status) {
+            success: function (result) {
                 // Single entry return as Object.  Convert to array
                 createNewActors([result]);
-                $(".statusMessage").text(status).fadeIn().delay(300).fadeOut();
             },
             error: function (result) {
                 var errMsg = "Webservices error " + result.status + ":" + restFulWsHost;
-                $(".statusMessage").text(errMsg).fadeIn();
+                statusMessage(result.status, errMsg);
             }
         });
-
 
     });
 
@@ -90,17 +109,15 @@ var main = function () {
         // When user click on the star, toggle the star and update the DB
         // The star is an icon child of "this" element
         var $currRow = $(event.currentTarget);
-        var $starElement = $currRow.children("i.data-actorStarred");
-        var actorId = $currRow.parent().parent().find("span.data-actorId").text();
+        var $starElement = $currRow.children(".data-actorStarred");
+        var actorId = $currRow.parent().parent().find(".data-actorId").text();
         var updateData = {};
         var starFlag = true;
 
         if ($starElement.text() === "star") {
             starFlag = false;
         }
-
-        // Fade it out
-        $starElement.hide();
+        // Update the data object
         updateData.starred = starFlag;
 
         // We need to perform AJAX update to the JSON server here
@@ -110,18 +127,19 @@ var main = function () {
             method: "PATCH",
             data: updateData,
             success: function (result, status) {
+                $starElement.hide();
                 var starValue = "star";
                 if (!result.starred) {
                     starValue += "_border";
                 }
                 $starElement.text(starValue);
                 $starElement.fadeIn();
-                $(".statusMessage").text(status).fadeIn().delay(300).fadeOut();
+                statusMessage(status, "updated");
             },
             error: function (result) {
                 var errMsg = "Webservices error " + result.status + ":" + restFulWsHost;
-                $(".statusMessage").text(errMsg).fadeIn();
-                $starElement.fadeIn();
+                statusMessage(result.status, errMsg);
+
             }
         });
         // Stop the action to prevent follow link
